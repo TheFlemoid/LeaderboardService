@@ -1,0 +1,36 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'mysql:mysql-connector-java:8.0.31'
+    implementation 'com.google.code.gson:gson:2.10'
+    implementation 'com.sparkjava:spark-core:2.9.4'
+    implementation 'org.slf4j:slf4j-api:2.0.5'
+    implementation 'org.apache.logging.log4j:log4j-core:2.19.0'
+    implementation 'org.apache.logging.log4j:log4j-api:2.19.0'
+
+    testImplementation 'junit:junit:4.13.2'
+}
+
+jar {
+	duplicatesStrategy = DuplicatesStrategy.INCLUDE
+
+    manifest {
+        attributes ('Main-Class': 'com.tdberg.apps.leaderboard.Main',
+                    'Implementation-Version': '0.2')
+
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+application {
+    mainClass = 'com.tdberg.apps.leaderboard.Main'
+}

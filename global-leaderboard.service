@@ -1,0 +1,11 @@
+[Unit]
+Description=RESTful application that receives, stores, and reports on high scores.  Used by game developers to support cross platform, global leaderboards.
+After=network.target
+
+[Service]
+User=<USERNAME>
+Group=<GROUPNAME>
+ExecStart=/opt/GlobalLeaderboard/LeaderboardService/bin/LeaderboardService /opt/GlobalLeaderboard/leaderboard.properties
+
+[Install]
+WantedBy=multi-user.target

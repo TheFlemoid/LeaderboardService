@@ -1,0 +1,2 @@
+rootProject.name = 'LeaderboardService'
+include('app')
